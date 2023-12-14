@@ -1,0 +1,22 @@
+{
+  "name": "vkrsmart/sdk",
+  "description": "Sdk to send request for vkrsmart api",
+  "type": "sdk",
+  "autoload": {
+    "psr-4": {
+      "Search\\Sdk\\": "src/",
+      "Search\\Sdk\\Core\\" : "src/core",
+      "Search\\Sdk\\Logs\\" : "src/logs",
+      "Search\\Sdk\\Models\\": "src/models",
+      "Search\\Sdk\\Test\\" : "src/test"
+    }
+  },
+  "require": {
+    "ext-curl": "*",
+    "ext-json": "*",
+    "firebase/php-jwt": "^6.9"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5"
+  }
+}
