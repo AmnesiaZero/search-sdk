@@ -5,11 +5,13 @@ namespace Search\Sdk\collections;
 use Search\Sdk\Client;
 use Search\Sdk\core\Response;
 
-abstract class Collection extends Response
+class Collection extends Response
 {
     public array $collection;
 
-    const PREFIX = '';
+    protected string $prefix;
+
+    protected array $params;
 
     public function __construct(Client $client)
     {
@@ -30,16 +32,24 @@ abstract class Collection extends Response
      * @param array $params
      * @return array|mixed
      */
-    public function search(string $search,array $params)
+    public function search(string $search,array $params): mixed
     {
-        $apiMethod = "/search/".self::PREFIX;
-        $this->response = $this->getClient()->makeRequest($apiMethod, array());
-        if (array_key_exists('message', $this->response)) {
-            $this->collection = $this->response['result'];
+        $apiMethod = "/search/".$this->prefix;
+        $this->response = $this->getClient()->makeRequest($apiMethod, array_merge(['search' => $search],$params));
+        if (array_key_exists($this->prefix, $this->response) and is_array($this->response[$this->prefix])) {
+            $this->collection = $this->response[$this->prefix];
+        }
+        elseif (!is_array($this->response[$this->prefix])){
+            $this->collection = [$this->response[$this->prefix]];
         }
         else {
-            $this->data = array();
+            $this->collection = array();
         }
+        return $this->collection;
+    }
+
+    public function get():array
+    {
         return $this->collection;
     }
 

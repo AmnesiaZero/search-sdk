@@ -2,13 +2,10 @@
 
 namespace Search\Sdk\collections;
 
-class AuthorCollection
+class AuthorCollection extends Collection
 {
-    const PREFIX = 'books';
-    public function __construct()
-    {
+    protected string $prefix = 'authors';
 
 
-    }
 
 }

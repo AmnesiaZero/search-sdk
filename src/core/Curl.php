@@ -25,7 +25,7 @@ class Curl
         Log::debug('url = '.$url);
         $headers = array(
             'Authorization:Bearer ' . $token,
-            'Content-Type: multipart/form-data',
+            'Content-Type: application/json',
             'Accept: application/json'
         );
         Log::debug($headers);
@@ -40,7 +40,6 @@ class Curl
         curl_setopt($curl,CURLOPT_FOLLOWLOCATION, true);
 
         $curlResult = curl_exec($curl);
-        Log::debug($curlResult);
         if (curl_errno($curl)) {
             return Curl::getError('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
@@ -49,7 +48,6 @@ class Curl
         if($result==null){
             return Curl::getError('API null response',400);
         }
-        Log::debug($result);
         return $result;
     }
 

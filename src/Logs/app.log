@@ -1,0 +1,8 @@
+[2023-12-15T16:19:37.967710+01:00] name.DEBUG: url = https://dev.api.search.ipr-smart.ru/api/search/books?organisation_id=32&search=a&available=0 [] []
+[2023-12-15T16:19:37.969374+01:00] name.DEBUG: ["Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcmdhbml6YXRpb25faWQiOjMyLCJleHAiOjUwMDAwMTcwMjY1MzU3N30._MEnrvPJmiUJQczesbTDAHwvO61RgaqjamQr1KBIYjk","Content-Type: application\/json","Accept: application\/json"] [] []
+[2023-12-15T16:19:38.825248+01:00] name.DEBUG: Успешно получены книги [] []
+[2023-12-15T16:19:38.826248+01:00] name.DEBUG: A Course of Business English Learning. Деловой английский язык [] []
+[2023-12-15T16:19:38.827088+01:00] name.DEBUG: url = https://dev.api.search.ipr-smart.ru/api/search/free_publications?organisation_id=32&search= [] []
+[2023-12-15T16:19:38.827564+01:00] name.DEBUG: ["Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcmdhbml6YXRpb25faWQiOjMyLCJleHAiOjUwMDAwMTcwMjY1MzU3OH0.mxH5oLHEXu12eZsImSVmwqMVL9kXkwHtRHFU1QnhBus","Content-Type: application\/json","Accept: application\/json"] [] []
+[2023-12-15T16:19:39.189153+01:00] name.DEBUG: Успешно получены бесплатные публикации: [] []
+[2023-12-15T16:19:39.190076+01:00] name.DEBUG: Книга Памяти [] []

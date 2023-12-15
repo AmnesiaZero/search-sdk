@@ -6,5 +6,8 @@ use Search\Sdk\Models\Model;
 
 class Collection extends Model
 {
+    protected string $prefix = 'collections';
+
+
 
 }

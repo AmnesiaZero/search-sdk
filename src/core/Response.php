@@ -21,7 +21,6 @@ class Response
     /*
      * Данные ответа
      */
-    protected array $data;
 
 
 
@@ -39,7 +38,6 @@ class Response
 
         $this->client = $client;
         $this->response = $response;
-        $this->data = $response['data'];
         return $this;
     }
 
@@ -60,10 +58,10 @@ class Response
      */
     protected function getValue($name): string
     {
-        if (array_key_exists($name, $this->data)) {
-            return $this->data[$name];
+        if (array_key_exists($name, $this->response)) {
+            return $this->response[$name];
         } else {
-            return '';
+            return false;
         }
     }
 
@@ -81,7 +79,7 @@ class Response
      * Возвращает текстовое сообщение ошибки
      * @return mixed
      */
-    public function getMessage()
+    public function getMessage(): mixed
     {
         return $this->response['message'];
     }

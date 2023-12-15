@@ -9,7 +9,7 @@ use Search\Sdk\Logs\Log;
 
 class Client
 {
-    CONST EXP = 500000;
+    CONST EXP = 500000000000000;
     /*
      * id организации
      */
@@ -41,7 +41,6 @@ class Client
     {
         $payload = [
             "organization_id" => $this->organisationId,
-            'iat' => time(),
             'exp' => time() + self::EXP,
         ];
         $token = JWT::encode($payload, $this->secretKey, 'HS256');
