@@ -7,7 +7,7 @@ use Search\Sdk\Client;
 
 class Model
 {
-    CONST PREFIX = '';
+    protected string $prefix;
 
     /*
      * Инстанс клиента
@@ -30,13 +30,14 @@ class Model
     /**
      * Конструктор Model
      * @param Client $client
-     * @param $response
+     * @param array $response
      * @throws Exception
      */
-    public function __construct(Client $client, $response = null)
+    public function __construct(Client $client, array $response = [])
     {
         $this->client = $client;
         $this->response = $response;
+        $this->params = [];
     }
 
 
@@ -51,10 +52,10 @@ class Model
      */
     public function search(string $search): void
     {
-        $apiMethod = "/search/".self::PREFIX;
+        $apiMethod = "/search/".$this->prefix;
         $this->params = array_merge($this->params,['search' => $search]);
         $this->response = $this->getClient()->makeRequest($apiMethod, $this->params);
-        if (array_key_exists('data', $this->response)) {
+        if (array_key_exists('data', $this->response) and $this->response['data']!=null) {
             $this->data = $this->response['data'];
         }
         else {
@@ -64,14 +65,14 @@ class Model
     /**
      * Получить значение по ключу
      * @param $name
-     * @return string
+     * @return string|bool
      */
-    protected function getValue($name): string
+    protected function getValue($name):string|bool
     {
         if (array_key_exists($name, $this->response)) {
             return $this->response[$name];
         } else {
-            return '';
+            return false;
         }
     }
 

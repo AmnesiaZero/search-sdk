@@ -3,11 +3,13 @@
 namespace Search\Sdk;
 use Exception;
 use Firebase\JWT\JWT;
+use http\Env\Url;
 use Search\Sdk\core\Curl;
+use Search\Sdk\Logs\Log;
 
 class Client
 {
-    CONST EXP = 5000;
+    CONST EXP = 500000;
     /*
      * id организации
      */
@@ -38,12 +40,16 @@ class Client
     public function makeRequest($apiMethod, array $params=null)
     {
         $payload = [
-            "organisation_id" => $this->organisationId,
+            "organization_id" => $this->organisationId,
             'iat' => time(),
             'exp' => time() + self::EXP,
         ];
         $token = JWT::encode($payload, $this->secretKey, 'HS256');
         $params = array_merge(["organisation_id" => $this->organisationId], $params);
-        return Curl::exec($apiMethod, $token, $params);
+        $result = Curl::exec($apiMethod, $token, $params);
+        if (array_key_exists('message',$result)){
+            Log::debug($result['message']);
+        }
+        return $result;
     }
 }

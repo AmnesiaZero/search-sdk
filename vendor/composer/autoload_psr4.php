@@ -11,7 +11,9 @@ return array(
     'Search\\Sdk\\Logs\\' => array($baseDir . '/src/logs'),
     'Search\\Sdk\\Core\\' => array($baseDir . '/src/core'),
     'Search\\Sdk\\' => array($baseDir . '/src'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
+    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

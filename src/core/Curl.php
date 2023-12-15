@@ -2,11 +2,12 @@
 
 namespace Search\Sdk\Core;
 
+use Search\Sdk\Logs\Log;
+
 class Curl
 {
-    const API = 'http://api.search.ipr-smart.ru/api';
+    const API = 'https://dev.api.search.ipr-smart.ru/api';
 
-    const X_API_KEY = '';
 
     /**
      * Отправка запроса
@@ -20,27 +21,36 @@ class Curl
         if (!empty($params)) {
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         };
-
+        $url = self::API.$apiMethod;
+        Log::debug('url = '.$url);
         $headers = array(
-            'Authorization: Bearer ' . $token,
-            'X-APIKey: ' . self::X_API_KEY,
-            'Content-Type: application/x-www-form-urlencoded; charset=utf-8',
+            'Authorization:Bearer ' . $token,
+            'Content-Type: multipart/form-data',
             'Accept: application/json'
         );
+        Log::debug($headers);
 
         $curl = curl_init();
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_URL, self::API . $apiMethod);
+        curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl,CURLOPT_FOLLOWLOCATION, true);
 
         $curlResult = curl_exec($curl);
-
+        Log::debug($curlResult);
         if (curl_errno($curl)) {
             return Curl::getError('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
-        return json_decode($curlResult, true);
+        curl_close($curl);
+        $result = json_decode($curlResult, true);
+        if($result==null){
+            return Curl::getError('API null response',400);
+        }
+        Log::debug($result);
+        return $result;
     }
 
 
@@ -52,12 +62,13 @@ class Curl
      */
     private static function getError($message, $code): array
     {
-        return array(
+        Log::debug('error');
+        return [
             'success' => false,
             'message' => $message,
             'total' => 0,
             'status' => $code,
             'data' => null,
-        );
+        ];
     }
 }
