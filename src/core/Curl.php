@@ -60,7 +60,6 @@ class Curl
      */
     private static function getError($message, $code): array
     {
-        Log::debug('error');
         return [
             'success' => false,
             'message' => $message,

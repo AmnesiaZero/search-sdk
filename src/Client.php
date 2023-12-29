@@ -46,9 +46,6 @@ class Client
         $token = JWT::encode($payload, $this->secretKey, 'HS256');
         $params = array_merge(["organisation_id" => $this->organisationId], $params);
         $result = Curl::exec($apiMethod, $token, $params);
-        if (array_key_exists('message',$result)){
-            Log::debug($result['message']);
-        }
         return $result;
     }
 }
