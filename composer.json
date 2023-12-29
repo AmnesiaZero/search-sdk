@@ -1,6 +1,6 @@
 {
-  "name": "vkrsmart/sdk",
-  "description": "Sdk to send request for vkrsmart api",
+  "name": "search/sdk",
+  "description": "Sdk to send request for search api",
   "type": "sdk",
   "autoload": {
     "psr-4": {
