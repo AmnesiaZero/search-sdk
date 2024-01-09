@@ -39,11 +39,8 @@ class Collection extends Response
         if (array_key_exists($this->prefix, $this->response) and is_array($this->response[$this->prefix])) {
             $this->collection = $this->response[$this->prefix];
         }
-        elseif (!is_array($this->response[$this->prefix])){
-            $this->collection = [$this->response[$this->prefix]];
-        }
         else {
-            $this->collection = array();
+            return false;
         }
         return $this->collection;
     }
