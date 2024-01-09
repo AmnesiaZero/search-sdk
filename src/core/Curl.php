@@ -22,14 +22,11 @@ class Curl
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         };
         $url = self::API.$apiMethod;
-        Log::debug('url = '.$url);
         $headers = array(
             'Authorization:Bearer ' . $token,
             'Content-Type: application/json',
             'Accept: application/json'
         );
-        Log::debug($headers);
-
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
