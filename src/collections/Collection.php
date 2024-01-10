@@ -7,11 +7,13 @@ use Search\Sdk\core\Response;
 
 class Collection extends Response
 {
-    public array $collection;
+    public array $collection=[];
 
     protected string $prefix;
 
     protected array $params;
+
+    protected string $titleField='title';
 
     public function __construct(Client $client)
     {
@@ -48,6 +50,16 @@ class Collection extends Response
     public function get():array
     {
         return $this->collection;
+    }
+
+    public function getNames(): string
+    {
+        $string = '';
+        for($i=0;$i<count($this->collection);$i++)
+        {
+            $string.= ($i+1).$this->collection[$i][$this->titleField].'\n';
+        }
+        return $string;
     }
 
 }

@@ -8,7 +8,4 @@ class Book extends Model
 {
     protected string $prefix = 'books';
 
-
-
-
 }

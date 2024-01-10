@@ -7,4 +7,6 @@ use Search\Sdk\Client;
 class BookCollection extends Collection
 {
     protected string $prefix = 'books';
+
+    protected string $titleField = 'title';
 }
