@@ -32,6 +32,17 @@ class Model
         }
     }
 
+    public function toString(): string
+    {
+        $string = '';
+        foreach (array_keys($this->content) as $key){
+            $string.=$key.":".$this->content[$key]."\n";
+        }
+        return $string;
+    }
+
+
+
 
 
 
