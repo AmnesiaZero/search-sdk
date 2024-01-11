@@ -45,9 +45,9 @@ class Response
 
     /**
      * Получить клиент
-     * @return Client
+     * @return BasicClient
      */
-    public function getClient(): Client
+    public function getClient(): BasicClient
     {
         return $this->client;
     }

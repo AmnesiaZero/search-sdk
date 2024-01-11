@@ -22,14 +22,6 @@ class Collection extends Response
     }
 
     /**
-     * @return Client
-     */
-    public function getClient(): Client
-    {
-        return $this->client;
-    }
-
-    /**
      * Отправка запроса
      * @param string $search
      * @param array $params
