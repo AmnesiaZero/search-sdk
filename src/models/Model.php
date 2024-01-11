@@ -37,8 +37,8 @@ class Model
     public function toString(): string
     {
         $string = "";
-        foreach (array_keys($this->showFields ) as $key){
-                $string.=$key.":".$this->content[$key]."\n";
+        foreach (array_keys($this->showFields) as $key){
+                $string.=$this->showFields[$key].":".$this->content[$key]."\n";
             }
         return $string;
     }

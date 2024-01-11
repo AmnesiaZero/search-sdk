@@ -58,7 +58,7 @@ class Collection extends Response
         for($i=0;$i<count($this->collection);$i++)
         {
             $string.= ($i+1).') '.$this->collection[$i][$this->titleField]."\n";
-            $string.= 'Ссылка на книгу -[здесь будет ссылка]'."\n";
+            $string.= 'Ссылка на книгу - [здесь будет ссылка]'."\n";
         }
         return $string;
     }
