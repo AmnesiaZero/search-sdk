@@ -9,6 +9,8 @@ class Model
 {
     public array $content;
 
+    protected array $showFields;
+
     /**
      * Конструктор Model
      * @param array $content
@@ -34,10 +36,10 @@ class Model
 
     public function toString(): string
     {
-        $string = '';
-        foreach (array_keys($this->content) as $key){
-            $string.=$key.":".$this->content[$key]."\n";
-        }
+        $string = "";
+        foreach (array_keys($this->showFields ) as $key){
+                $string.=$key.":".$this->content[$key]."\n";
+            }
         return $string;
     }
 
