@@ -35,7 +35,7 @@ class Collection extends Response
 
     public function searchMaster(string $search,array $params = [])
     {
-        $apiMethod = "/search/master".$this->prefix;
+        $apiMethod = "/search/master/".$this->prefix;
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
