@@ -12,7 +12,7 @@ class Response
     /*
      * Инстанс клиента
      */
-    protected Client $client;
+    protected BasicClient $client;
 
     /*
      * Ответ
