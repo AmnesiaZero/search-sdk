@@ -1,13 +1,11 @@
 <?php
 
-namespace Search\Sdk;
+namespace Search\Sdk\Clients;
 use Exception;
 use Firebase\JWT\JWT;
-use http\Env\Url;
 use Search\Sdk\core\Curl;
-use Search\Sdk\Logs\Log;
 
-class Client
+class Client extends BasicClient
 {
     CONST EXP = 500000000000000;
     /*
@@ -36,8 +34,13 @@ class Client
         $this->secretKey = $secretKey;
     }
 
-
-    public function makeRequest($apiMethod, array $params=null)
+    /**
+     * Сделать запрос к API через интерфейс клиента
+     * @param $apiMethod
+     * @param array|null $params
+     * @return array|mixed
+     */
+    public function makeRequest($apiMethod, array $params=null): mixed
     {
         $payload = [
             "organization_id" => $this->organisationId,

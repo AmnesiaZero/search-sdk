@@ -2,7 +2,8 @@
 
 namespace Search\Sdk\collections;
 
-use Search\Sdk\Client;
+use Search\Sdk\Clients\BasicClient;
+use Search\Sdk\Clients\Client;
 use Search\Sdk\core\Response;
 
 class Collection extends Response
@@ -15,7 +16,7 @@ class Collection extends Response
 
     protected string $titleField='title';
 
-    public function __construct(Client $client)
+    public function __construct(BasicClient $client)
     {
         parent::__construct($client);
     }
@@ -37,6 +38,17 @@ class Collection extends Response
     public function search(string $search,array $params): mixed
     {
         $apiMethod = "/search/".$this->prefix;
+        return $this->basicSearch($search,$apiMethod,$params);
+    }
+
+    public function searchMaster(string $search,array $params = [])
+    {
+        $apiMethod = "/search/master".$this->prefix;
+        return $this->basicSearch($search,$apiMethod,$params);
+    }
+
+    public function basicSearch(string $search,string $apiMethod,array $params)
+    {
         $this->response = $this->getClient()->makeRequest($apiMethod, array_merge(['search' => $search],$params));
         if (array_key_exists($this->prefix, $this->response) and is_array($this->response[$this->prefix])) {
             $this->collection = $this->response[$this->prefix];
@@ -46,6 +58,8 @@ class Collection extends Response
         }
         return $this->collection;
     }
+
+
 
     public function get():array
     {

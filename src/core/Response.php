@@ -3,7 +3,8 @@
 namespace Search\Sdk\core;
 
 use Exception;
-use Search\Sdk\Client;
+use Search\Sdk\Clients\BasicClient;
+use Search\Sdk\Clients\Client;
 
 class Response
 {
@@ -30,7 +31,7 @@ class Response
      * @param $response
      * @throws Exception
      */
-    public function __construct(Client $client, $response = null)
+    public function __construct(BasicClient $client, $response = null)
     {
         if (!$client) {
             throw new Exception('client is not init');

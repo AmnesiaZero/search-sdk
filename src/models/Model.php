@@ -2,9 +2,6 @@
 
 namespace Search\Sdk\Models;
 
-use Exception;
-use Search\Sdk\Client;
-
 class Model
 {
     public array $content;
