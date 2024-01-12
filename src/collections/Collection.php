@@ -58,12 +58,18 @@ class Collection extends Response
         return $this->collection;
     }
 
-    public function getNames(): string
+    public function getNames(array $inputCollection=null): string
     {
+        if($inputCollection!=null){
+            $collection = $inputCollection;
+        }
+        else{
+            $collection = $this->collection;
+        }
         $string = '';
-        for($i=0;$i<count($this->collection);$i++)
+        for($i=0;$i<count($collection);$i++)
         {
-            $string.= ($i+1).') '.$this->collection[$i][$this->titleField]."\n";
+            $string.= ($i+1).') '.$collection[$i][$this->titleField]."\n";
             $string.= 'Ссылка на книгу - [здесь будет ссылка]'."\n";
         }
         return $string;
