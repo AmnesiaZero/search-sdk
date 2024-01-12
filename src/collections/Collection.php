@@ -61,24 +61,25 @@ class Collection extends Response
     /**
      * Получить имена элементов коллекции
      * @param int $pageId
-     * @param null $inputCollection
+     * @param int $perPage
      * @return string
      */
-    public function getNames(int $pageId,$inputCollection=null): string
+    public function getNames(int $pageId,int $perPage=10): string
     {
-        if($inputCollection!=null){
-            $collection = $inputCollection;
-        }
-        else{
-            $collection = $this->collection;
-        }
+        $showContent = $this->showPage($pageId,$perPage);
         $string = '';
-        for($i=0;$i<count($collection);$i++)
+        for($i=0;$i<count($showContent);$i++)
         {
-            $string.= $pageId. ($i+1).') '.$collection[$i][$this->titleField]."\n";
+            $string.= $pageId. ($i+1).') '.$showContent[$i][$this->titleField]."\n";
             $string.= 'Ссылка на книгу - [здесь будет ссылка]'."\n";
         }
         return $string;
+    }
+
+    protected function showPage(int $pageId,$perPage): array
+    {
+        $startIndex = ($pageId - 1) * $perPage;
+        return array_slice($this->collection,$startIndex,$perPage);
     }
 
 }
