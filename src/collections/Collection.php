@@ -58,7 +58,13 @@ class Collection extends Response
         return $this->collection;
     }
 
-    public function getNames(array $inputCollection=null): string
+    /**
+     * Получить имена элементов коллекции
+     * @param int $pageId
+     * @param null $inputCollection
+     * @return string
+     */
+    public function getNames(int $pageId,$inputCollection=null): string
     {
         if($inputCollection!=null){
             $collection = $inputCollection;
@@ -69,7 +75,7 @@ class Collection extends Response
         $string = '';
         for($i=0;$i<count($collection);$i++)
         {
-            $string.= ($i+1).') '.$collection[$i][$this->titleField]."\n";
+            $string.= $pageId. ($i+1).') '.$collection[$i][$this->titleField]."\n";
             $string.= 'Ссылка на книгу - [здесь будет ссылка]'."\n";
         }
         return $string;
