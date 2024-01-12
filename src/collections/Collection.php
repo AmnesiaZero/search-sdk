@@ -60,13 +60,15 @@ class Collection extends Response
 
     /**
      * Получить имена элементов коллекции
+     * @param array $collection
      * @param int $pageId
      * @param int $perPage
      * @return string
      */
-    public function getNames(int $pageId,int $perPage=9): string
+    public function getNames(array $collection, int $pageId,int $perPage=9): string
     {
-        $showContent = $this->paginate($pageId,$perPage);
+        $startIndex = ($pageId - 1) * $perPage;
+        $showContent =  array_slice($collection,$startIndex,$perPage);
         $string = '';
         //Если номер страницы равен одному
         if($pageId==1){
@@ -80,10 +82,5 @@ class Collection extends Response
         return $string;
     }
 
-    protected function paginate(int $pageId,$perPage): array
-    {
-        $startIndex = ($pageId - 1) * $perPage;
-        return array_slice($this->collection,$startIndex,$perPage);
-    }
 
 }
