@@ -64,10 +64,14 @@ class Collection extends Response
      * @param int $perPage
      * @return string
      */
-    public function getNames(int $pageId,int $perPage=10): string
+    public function getNames(int $pageId,int $perPage=9): string
     {
-        $showContent = $this->showPage($pageId,$perPage);
+        $showContent = $this->paginate($pageId,$perPage);
         $string = '';
+        //Если номер страницы равен одному
+        if($pageId==1){
+            $pageId='';
+        }
         for($i=0;$i<count($showContent);$i++)
         {
             $string.= $pageId. ($i+1).') '.$showContent[$i][$this->titleField]."\n";
@@ -76,7 +80,7 @@ class Collection extends Response
         return $string;
     }
 
-    protected function showPage(int $pageId,$perPage): array
+    protected function paginate(int $pageId,$perPage): array
     {
         $startIndex = ($pageId - 1) * $perPage;
         return array_slice($this->collection,$startIndex,$perPage);
