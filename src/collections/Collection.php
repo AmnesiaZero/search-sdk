@@ -68,17 +68,15 @@ class Collection extends Response
     public function getNames(array $collection, int $pageId,int $perPage=9): string
     {
         $startIndex = ($pageId - 1) * $perPage;
-        $showContent =  array_slice($collection,$startIndex,$perPage);
+        $showContent = array_slice($collection, $startIndex, $perPage);
         $string = '';
-        //Если номер страницы равен одному
-        if($pageId==1){
-            $pageId='';
+        $pageNumber = ($pageId - 1) * $perPage + 1; // Начальный номер для текущей страницы
+
+        for ($i = 0; $i < count($showContent); $i++) {
+            $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
+            $string .= 'Ссылка на книгу - [здесь будет ссылка]' . "\n";
         }
-        for($i=0;$i<count($showContent);$i++)
-        {
-            $string.= $pageId. ($i+1).') '.$showContent[$i][$this->titleField]."\n";
-            $string.= 'Ссылка на книгу - [здесь будет ссылка]'."\n";
-        }
+
         return $string;
     }
 
