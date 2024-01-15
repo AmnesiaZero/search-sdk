@@ -8,11 +8,13 @@ class Model
 
     protected array $showFields;
 
+    protected array $params;
+
     /**
      * Конструктор Model
      * @param array $content
      */
-    public function __construct(array $content)
+    public function __construct(array $content=[])
     {
        $this->content = $content;
     }
@@ -31,12 +33,26 @@ class Model
         }
     }
 
+    public function getParams():array
+    {
+        return array_keys($this->showFields);
+    }
+
+    public function getStringParams():string
+    {
+        $string = '';
+        foreach (array_keys($this->showFields) as $key){
+            $string.=$this->showFields[$key].":".$this->content[$key]."\n";
+        }
+        return $string;
+    }
+
     public function toString(): string
     {
         $string = "";
         foreach (array_keys($this->showFields) as $key){
                 $string.=$this->showFields[$key].":".$this->content[$key]."\n";
-            }
+        }
         return $string;
     }
 
