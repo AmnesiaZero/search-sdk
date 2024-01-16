@@ -39,11 +39,14 @@ class Model
         return array_keys($this->showFields);
     }
 
+
     public function getStringParams():string
     {
         $string = '';
-        foreach (array_keys($this->showFields) as $key){
-            $string.=$this->showFields[$key].":".$this->content[$key]."\n";
+        $i = 1;
+        foreach ($this->showFields as $key=>$value){
+            $string.=$i.")".$value."\n";
+            $i++;
         }
         return $string;
     }
@@ -51,8 +54,8 @@ class Model
     public function toString(): string
     {
         $string = "";
-        foreach (array_keys($this->showFields) as $key){
-                $string.=$this->showFields[$key].":".$this->content[$key]."\n";
+        foreach ($this->showFields as $key=>$value){
+            $string.=$value.":".$this->content[$key]."\n";
         }
         return $string;
     }
