@@ -8,7 +8,8 @@ class Model
 
     protected array $showFields;
 
-    protected array $params;
+
+    protected array $intParams;
 
     /**
      * Конструктор Model
@@ -54,6 +55,16 @@ class Model
                 $string.=$this->showFields[$key].":".$this->content[$key]."\n";
         }
         return $string;
+    }
+
+    public function isInt(string $param):bool
+    {
+        if(in_array($param,$this->intParams)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 

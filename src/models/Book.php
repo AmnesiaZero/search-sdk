@@ -14,7 +14,9 @@ class Book extends Model
         'authors' => 'Авторы',
         'pubyear' => 'Год издания',
         'description' => 'Описание'
-        ];
+    ];
+
+    protected array $intParams = ['pubyear'];
 
 
 
