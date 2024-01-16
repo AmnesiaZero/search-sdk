@@ -5,9 +5,10 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="Search\Sdk\" />
       <sourceFolder url="file://$MODULE_DIR$/src/core" isTestSource="false" packagePrefix="Search\Sdk\Core\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/logs" isTestSource="false" packagePrefix="Search\Sdk\Logs\" />
       <sourceFolder url="file://$MODULE_DIR$/src/models" isTestSource="false" packagePrefix="Search\Sdk\Models\" />
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="false" packagePrefix="Search\Sdk\Test\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Logs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/logs" isTestSource="false" packagePrefix="Search\Sdk\Logs\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />

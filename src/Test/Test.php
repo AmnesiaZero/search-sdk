@@ -4,7 +4,7 @@ namespace Search\Sdk\Test;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
-use Search\Sdk\Client;
+use Search\Sdk\Clients\Client;
 use Search\Sdk\collections\BookCollection;
 use Search\Sdk\collections\FreePublicationCollection;
 use Search\Sdk\Logs\Log;
