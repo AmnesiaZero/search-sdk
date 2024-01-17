@@ -95,7 +95,7 @@ class Collection extends Response
     public function getLink(array $modelContent): string
     {
         $id = $modelContent['id'];
-        return 'https://www.iprbookshop.ru/'.$id.'/.html';
+        return 'https://www.iprbookshop.ru/'.$id.'.html';
     }
 
 
