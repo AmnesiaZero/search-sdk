@@ -71,13 +71,13 @@ class Collection extends Response
      * @param int $perPage
      * @return string
      */
-    public function getNames(array $collection, int $pageId,int $perPage=9): string
+    public function getNames(array $collection, int $pageId,int $perPage=10): string
     {
         $startIndex = ($pageId - 1) * $perPage;
         $showContent = array_slice($collection, $startIndex, $perPage);
         $string = '';
         $pageNumber = ($pageId - 1) * $perPage + 1; // Начальный номер для текущей страницы
-        if(array_key_exists('books',$collection)){
+        if($this->prefix=='books'){
             for ($i = 0; $i < count($showContent); $i++) {
                 $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
                 $string .= 'Ссылка -'.$this->getLink($showContent[$i]) . "\n";
