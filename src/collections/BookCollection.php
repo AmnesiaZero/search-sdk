@@ -4,7 +4,7 @@ namespace Search\Sdk\collections;
 
 class BookCollection extends Collection
 {
-    protected string $prefix = 'books';
+    protected const PREFIX = 'books';
 
     protected string $titleField = 'title';
 }

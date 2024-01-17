@@ -37,7 +37,7 @@ class Model
 
     public function getParams():array
     {
-        return array_keys($this->params);
+        return $this->params;
     }
 
 

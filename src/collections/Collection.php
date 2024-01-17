@@ -10,7 +10,7 @@ class Collection extends Response
 {
     public array $collection=[];
 
-    protected string $prefix;
+    protected const PREFIX = '';
 
     protected array $params;
 
@@ -29,7 +29,7 @@ class Collection extends Response
      */
     public function search(string $search,array $params): mixed
     {
-        $apiMethod = "/search/".$this->prefix;
+        $apiMethod = "/search/".self::PREFIX;
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
@@ -41,15 +41,15 @@ class Collection extends Response
      */
     public function searchMaster(string $search,array $params = []):mixed
     {
-        $apiMethod = "/search/master/".$this->prefix;
+        $apiMethod = "/search/master/".self::PREFIX;
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
     public function basicSearch(string $search,string $apiMethod,array $params)
     {
         $this->response = $this->getClient()->makeRequest($apiMethod, array_merge(['search' => $search],$params));
-        if (array_key_exists($this->prefix, $this->response) and is_array($this->response[$this->prefix])) {
-            $this->collection = $this->response[$this->prefix];
+        if (array_key_exists(self::PREFIX, $this->response) and is_array($this->response[self::PREFIX])) {
+            $this->collection = $this->response[self::PREFIX];
         }
         else {
             return false;
@@ -80,7 +80,7 @@ class Collection extends Response
 
         for ($i = 0; $i < count($showContent); $i++) {
             $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
-            $string .= 'Ссылка на книгу - [здесь будет ссылка]' . "\n";
+            $string .= 'Ссылка - [здесь будет ссылка]' . "\n";
         }
 
         return $string;

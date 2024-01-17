@@ -4,7 +4,7 @@ namespace Search\Sdk\collections;
 
 class FreePublicationCollection extends Collection
 {
-    protected string $prefix = 'free_publications';
+    protected const PREFIX = 'free_publications';
 
     protected string $titleField = 'title';
 
