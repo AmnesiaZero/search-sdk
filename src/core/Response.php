@@ -17,7 +17,7 @@ class Response
     /*
      * Ответ
      */
-    protected $response;
+    protected mixed $response;
 
     /*
      * Данные ответа
@@ -36,7 +36,6 @@ class Response
         if (!$client) {
             throw new Exception('client is not init');
         }
-
         $this->client = $client;
         $this->response = $response;
         return $this;
@@ -71,9 +70,9 @@ class Response
      * Возвращает статус запроса
      * @return mixed
      */
-    public function getSuccess()
+    public function getSuccess(): mixed
     {
-        return $this->response['success'];
+        return $this->getValue('success');
     }
 
     /**
@@ -82,7 +81,7 @@ class Response
      */
     public function getMessage(): mixed
     {
-        return $this->response['message'];
+        return $this->getValue('message');
     }
 
     /**
@@ -91,16 +90,8 @@ class Response
      */
     public function getTotal()
     {
-        return $this->response['total'];
+        return $this->getValue('total');
     }
 
-    /**
-     * Возвращает статус ответа
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->response['status'];
-    }
 
 }

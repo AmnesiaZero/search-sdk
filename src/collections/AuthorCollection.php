@@ -6,6 +6,6 @@ class AuthorCollection extends Collection
 {
     protected string $prefix = 'authors';
 
-
+    protected string $titleField = 'fullname';
 
 }

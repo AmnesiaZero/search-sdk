@@ -5,7 +5,12 @@ namespace Search\Sdk\Models;
 use Search\Sdk\Models\Model;
 class Author extends Model
 {
-    protected string $prefix = 'authors';
+    protected array $params = [
+        'fullname' => 'Имя',
+        'country' => 'Страна',
+    ];
+
+    protected array $intParams = [];
 
 
 

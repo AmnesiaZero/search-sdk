@@ -4,9 +4,10 @@ namespace Search\Sdk\Models;
 
 class Model
 {
+
     public array $content;
 
-    protected array $showFields;
+    protected array $params;
 
 
     protected array $intParams;
@@ -36,7 +37,7 @@ class Model
 
     public function getParams():array
     {
-        return array_keys($this->showFields);
+        return array_keys($this->params);
     }
 
 
@@ -44,7 +45,7 @@ class Model
     {
         $string = '';
         $i = 1;
-        foreach ($this->showFields as $key=>$value){
+        foreach ($this->params as $key=> $value){
             $string.=$i.")".$value."\n";
             $i++;
         }
@@ -54,7 +55,7 @@ class Model
     public function toString(): string
     {
         $string = "";
-        foreach ($this->showFields as $key=>$value){
+        foreach ($this->params as $key=> $value){
             $string.=$value.":".$this->content[$key]."\n";
         }
         return $string;

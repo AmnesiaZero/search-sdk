@@ -6,7 +6,18 @@ use Search\Sdk\Models\Model;
 
 class Collection extends Model
 {
-    protected string $prefix = 'collections';
+    protected array $params = [
+        'name' => 'Название',
+        'recordyear' => 'Год выпуска',
+        'authors' => 'Авторы',
+        'description' => 'Описание',
+        'executant' => 'Исполнитель',
+        'pubhouse' => 'Издательство'
+    ];
+
+    protected array $intParams = [
+        'recordyear'
+    ];
 
 
 

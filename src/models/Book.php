@@ -8,7 +8,7 @@ class Book extends Model
 {
     protected string $prefix = 'books';
 
-    protected array $showFields = [
+    protected array $params = [
         'title'=>'Название',
         'pubhouses' => 'Издательства',
         'authors' => 'Авторы',

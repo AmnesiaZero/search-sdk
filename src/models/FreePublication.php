@@ -6,11 +6,17 @@ use Search\Sdk\Models\Model;
 
 class FreePublication extends Model
 {
-    protected string $prefix = 'free-publications';
+    protected array $params = [
+        'title' => 'Название',
+        'year' => 'Год выпуска',
+        'countpages' => 'Количество страниц',
+        'subtitle' => 'Подзаголовок',
+        'city' => 'Город издательства',
+        'description' => 'Описание',
+        'pubhouse' => 'Издательство'
+    ];
 
-    public function get(): string
-    {
-        return $this->getValue('free_publications');
-    }
+    protected array $intParams = ['year','countpages'];
+
 
 }

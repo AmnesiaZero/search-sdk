@@ -6,6 +6,6 @@ class CollectionsCollection extends Collection
 {
     protected string $prefix = 'collections';
 
-
+    protected string $titleField = 'name';
 
 }

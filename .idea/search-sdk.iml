@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="false" packagePrefix="Search\Sdk\Test\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Logs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/logs" isTestSource="false" packagePrefix="Search\Sdk\Logs\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
