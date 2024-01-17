@@ -11,7 +11,7 @@ class Collection extends Model
         'books_count' => 'Количество книг'
     ];
 
-    protected array $intParams = [];
+    protected array $intParams = ['books_count'];
 
 
 
