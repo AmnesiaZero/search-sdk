@@ -4,7 +4,7 @@ namespace Search\Sdk\collections;
 
 class AudioCollection extends Collection
 {
-    protected const PREFIX  = 'audios';
+    protected string $prefix  = 'audios';
 
     protected string $titleField = 'title';
 

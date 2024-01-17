@@ -10,7 +10,7 @@ class Collection extends Response
 {
     public array $collection=[];
 
-    protected const PREFIX = '';
+    protected string $prefix;
 
     protected array $params;
 
@@ -29,7 +29,7 @@ class Collection extends Response
      */
     public function search(string $search,array $params): mixed
     {
-        $apiMethod = "/search/".self::PREFIX;
+        $apiMethod = "/search/".$this->prefix;
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
@@ -41,15 +41,15 @@ class Collection extends Response
      */
     public function searchMaster(string $search,array $params = []):mixed
     {
-        $apiMethod = "/search/master/".self::PREFIX;
+        $apiMethod = "/search/master/".$this->prefix;
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
     public function basicSearch(string $search,string $apiMethod,array $params): bool|array
     {
         $this->response = $this->getClient()->makeRequest($apiMethod, array_merge(['search' => $search],$params));
-        if (array_key_exists(self::PREFIX, $this->response) and is_array($this->response[self::PREFIX])) {
-            $this->collection = $this->response[self::PREFIX];
+        if (array_key_exists($this->prefix, $this->response) and is_array($this->response[$this->prefix])) {
+            $this->collection = $this->response[$this->prefix];
         }
         else {
             return false;
