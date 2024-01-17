@@ -45,7 +45,7 @@ class Collection extends Response
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
-    public function basicSearch(string $search,string $apiMethod,array $params)
+    public function basicSearch(string $search,string $apiMethod,array $params): bool|array
     {
         $this->response = $this->getClient()->makeRequest($apiMethod, array_merge(['search' => $search],$params));
         if (array_key_exists(self::PREFIX, $this->response) and is_array($this->response[self::PREFIX])) {

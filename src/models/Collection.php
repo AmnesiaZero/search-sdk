@@ -8,16 +8,10 @@ class Collection extends Model
 {
     protected array $params = [
         'name' => 'Название',
-        'recordyear' => 'Год выпуска',
-        'authors' => 'Авторы',
-        'description' => 'Описание',
-        'executant' => 'Исполнитель',
-        'pubhouse' => 'Издательство'
+        'books_count' => 'Количество книг'
     ];
 
-    protected array $intParams = [
-        'recordyear'
-    ];
+    protected array $intParams = [];
 
 
 
