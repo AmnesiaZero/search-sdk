@@ -77,7 +77,7 @@ class Collection extends Response
         $showContent = array_slice($collection, $startIndex, $perPage);
         $string = '';
         $pageNumber = ($pageId - 1) * $perPage + 1; // Начальный номер для текущей страницы
-        if($collection['books']!=null){
+        if(array_key_exists('books',$collection)){
             for ($i = 0; $i < count($showContent); $i++) {
                 $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
                 $string .= 'Ссылка -'.$this->getLink($showContent[$i]) . "\n";
