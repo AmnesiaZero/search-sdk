@@ -33,7 +33,13 @@ class Collection extends Response
         return $this->basicSearch($search,$apiMethod,$params);
     }
 
-    public function searchMaster(string $search,array $params = [])
+    /**
+     * Мастер-поиск
+     * @param string $search
+     * @param array $params
+     * @return array|false|mixed
+     */
+    public function searchMaster(string $search,array $params = []):mixed
     {
         $apiMethod = "/search/master/".$this->prefix;
         return $this->basicSearch($search,$apiMethod,$params);
