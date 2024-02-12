@@ -6,7 +6,6 @@ use Search\Sdk\Models\Model;
 
 class Book extends Model
 {
-    protected string $prefix = 'books';
 
     protected array $params = [
         'title'=>'Название',
