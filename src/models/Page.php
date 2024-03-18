@@ -2,7 +2,7 @@
 
 namespace Search\Sdk\Models;
 
-class BookContent extends Model
+class Page extends Model
 {
 
     protected array $fullParams = [
