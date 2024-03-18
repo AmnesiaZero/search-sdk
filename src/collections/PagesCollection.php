@@ -16,7 +16,7 @@ class PagesCollection extends Collection
         $pageNumber = ($pageId - 1) * $perPage + 1; // Начальный номер для текущей страницы
         for ($i = 0; $i < count($showContent); $i++) {
             if(!$showContent[$i]['flag']){
-                $title =substr($showContent[$i]['content'],0,20).'..........';
+                $title =substr($showContent[$i]['content'],0,100).'..........';
                 $string .= $pageNumber + $i . ') ' . $title . "\n";
             }
             else{
