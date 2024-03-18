@@ -4,7 +4,7 @@ namespace Search\Sdk\collections;
 
 class PagesCollection extends Collection
 {
-    protected string $prefix = 'book_content';
+    protected string $prefix = 'pages';
 
     protected string $titleField = 'title';
 
