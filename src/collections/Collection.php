@@ -77,25 +77,15 @@ class Collection extends Response
         $showContent = array_slice($collection, $startIndex, $perPage);
         $string = '';
         $pageNumber = ($pageId - 1) * $perPage + 1; // Начальный номер для текущей страницы
-        if(in_array($this->prefix, ['books', 'book_content'])){
-            for ($i = 0; $i < count($showContent); $i++) {
-                $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
-                $string .= 'Ссылка -'.$this->getLink($showContent[$i]) . "\n";
-            }
+        for ($i = 0; $i < count($showContent); $i++) {
+            $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
         }
-        else{
-            for ($i = 0; $i < count($showContent); $i++) {
-                $string .= $pageNumber + $i . ') ' . $showContent[$i][$this->titleField] . "\n";
-            }
-        }
-
         return $string;
     }
 
-    public function getLink(array $modelContent): string
+    public function getLink(int $bookId): string
     {
-        $id = $modelContent['id'];
-        return 'https://www.iprbookshop.ru/'.$id.'.html';
+        return 'https://www.iprbookshop.ru/'.$bookId.'.html';
     }
 
 
