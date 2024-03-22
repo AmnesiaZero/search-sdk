@@ -12,8 +12,7 @@ class Book extends Model
         'pubhouses' => 'Издательства',
         'authors' => 'Авторы',
         'pubyear' => 'Год издания',
-        'description' => 'Описание',
-        'page_id' => 'Страница книги'
+        'description' => 'Описание'
     ];
 
     protected array $intParams = ['pubyear'];
