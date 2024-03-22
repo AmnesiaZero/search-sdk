@@ -2,7 +2,6 @@
 
 namespace Search\Sdk\Core;
 
-use Search\Sdk\Logs\Log;
 
 class Curl
 {
@@ -22,7 +21,6 @@ class Curl
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         };
         $url = self::API.$apiMethod;
-        Log::debug('url = '.$url);
         $headers = array(
             'Authorization:Bearer ' . $token,
             'Content-Type: application/json',
@@ -38,7 +36,6 @@ class Curl
         curl_setopt($curl,CURLOPT_FOLLOWLOCATION, true);
 
         $curlResult = curl_exec($curl);
-        Log::debug('curl result = '.$curlResult);
         if (curl_errno($curl)) {
             return Curl::getError('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
