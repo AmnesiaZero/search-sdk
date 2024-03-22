@@ -10,11 +10,14 @@ class Page extends Model
         'pubyear' => 'Год выпуска книги',
         'authors' => 'Авторы книги',
         'description' => 'Описание книги ',
-        'pubhouses' => 'Издательство книги'
+        'pubhouses' => 'Издательство книги',
+        'page_id' => 'Номер страницы',
+        'content' => 'Содержание страницы'
     ];
 
     protected array $params = [
-         'page_id' => 'Номер страницы'
+         'page_id' => 'Номер страницы',
+          'content' => 'Содержание страницы'
     ];
 
     protected array $intParams = [
