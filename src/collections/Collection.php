@@ -49,7 +49,7 @@ class Collection extends Response
     {
         $this->response = $this->getClient()->makeRequest($apiMethod, array_merge(['search' => $search],$params));
         if (array_key_exists($this->prefix, $this->response) and is_array($this->response[$this->prefix])) {
-            $this->collection = $this->response[$this->prefix];
+            $this->collection = $this->response['data'];
         }
         else {
             return false;
